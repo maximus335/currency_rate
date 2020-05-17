@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  url: "<%= ENV['DB_URL'] %>"
+
+development:
+  database: 'currency_rate_development'
+  <<: *default
+
+test:
+  database: 'currency_rate_test'
+  <<: *default
+
+production:
+  database: currency_rate_production
+  <<: *default

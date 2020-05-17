@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: ci_test
+  url: postgres://postgres@localhost:5432

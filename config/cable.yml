@@ -1,0 +1,10 @@
+redis: &redis
+  adapter: redis
+  url: "<%= ENV['REDIS_URL'] %>/1"
+
+development: *redis
+
+test:
+  adapter: test
+
+production: *redis

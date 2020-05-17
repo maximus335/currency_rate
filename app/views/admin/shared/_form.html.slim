@@ -1,0 +1,17 @@
+= simple_form_for resource, url: admin_index_path,
+                            html: { class: 'form-horizontal' } do |f|
+
+  = f.input :rate, hint: 'You need to enter the force rate', input_html: { step: 0.00 }
+  = f.input :expire_datetime, as: :string, input_html: { class: 'datetimepicker1' }
+
+
+  hr
+  .form-group
+    .col-sm-10.col-sm-offset-2
+      .text-right
+        => f.button :submit, data: { confirm: "Are you sure?" }
+
+javascript:
+  $('.datetimepicker1').datetimepicker({
+      format: "DD-MM-YYYY h:mm A"
+  });

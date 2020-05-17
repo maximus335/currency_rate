@@ -1,0 +1,26 @@
+= stylesheet_link_tag 'application', media: :all
+
+.container role="container"
+  .row.margin-top-40
+    .col-md-8.col-md-offset-2
+      .panel.panel-default
+        .panel-heading
+          h2.panel-title Currency rate
+
+        - if flash[:alert]
+          .panel-danger
+            .panel-heading = flash[:alert]
+
+        .panel-body
+          = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+            = f.input :email, placeholder: 'Email', input_html: { class: 'form-control'}, label: false, required: false
+            = f.input :password,  placeholder: 'Password', input_html: { class: 'form-control'}, label: false, required: false
+
+            - if devise_mapping.rememberable?
+              .checkbox
+                label
+                  strong
+                    = f.input_field :remember_me, as: :boolean, boolean_style: :inline
+                    | Remember me
+
+            = f.submit 'Sign in', class: 'btn btn-primary'

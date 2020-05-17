@@ -1,0 +1,21 @@
+.navbar.navbar-default.navbar-static-top
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#navbar"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Currency rate', root_path, class: "navbar-brand"
+
+    .collapse.navbar-collapse#navbar
+      ul.nav.navbar-nav
+        li class="#{params[:controller] =~ /admin/ && 'active'}"
+          = link_to 'Admin', new_admin_path, class: "navbar-brand"
+
+      ul.nav.navbar-nav.navbar-right
+        - if current_user.present?
+          li
+            a= current_user.email
+          li
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete

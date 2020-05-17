@@ -1,0 +1,17 @@
+= content_for :toolbar
+- if collection.any?
+      table.table.table-condensed.table-hover.table-striped.table-bordered
+        thead
+          tr
+            th.col-xs-3 Rate
+            th.col-xs-4 Expire datetime
+            th.col-xs-3 Creator email
+        tbody
+          - collection.each do |force_rate|
+            tr
+              td= force_rate.rate
+              td= force_rate.expire_datetime.strftime('%d.%m.%Y %H:%M')
+              td= force_rate.user&.email
+- else
+  .alert.alert-warning
+    ' Force rates note found
